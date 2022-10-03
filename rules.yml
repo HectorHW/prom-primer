@@ -1,0 +1,8 @@
+groups:
+  - name: groupname
+    rules:
+      - record: http_400_500_api_error_ratio_24h
+        expr:
+          sum(increase(prometheus_http_requests_total{handler=~"/api/.*", code=~"[45].."}[24h]))
+          /
+          sum(increase(prometheus_http_requests_total{handler=~"/api/.*"}[24h]))

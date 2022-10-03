@@ -1,0 +1,14 @@
+services:
+  prom:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+
+    restart: unless-stopped
+    volumes:
+      - prom-data:/prometheus
+    ports:
+      - 9090:9090
+
+volumes:
+  prom-data:
